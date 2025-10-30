@@ -2,15 +2,15 @@ workflows:
   build-flutter-apk:
     name: Build Flutter APK on macOS
     max_build_duration: 60
-    instance_type: mac_mini_m2  # Use Apple's macOS builder
+    instance_type: mac_mini_m2
     environment:
       flutter: stable
     scripts:
       - name: Get dependencies
         script: |
           flutter pub get
-      - name: Build normal APK
+      - name: Build release APK
         script: |
-          flutter build apk
+          flutter build apk --release
     artifacts:
-      - build/app/outputs/flutter-apk/app.apk
+      - build/app/outputs/flutter-apk/app-release.apk
