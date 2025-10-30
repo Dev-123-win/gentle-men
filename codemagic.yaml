@@ -1,17 +1,16 @@
 workflows:
-  build-android-apk:
-    name: Build Android APK (Default)
+  build-flutter-apk:
+    name: Build Flutter APK on macOS
     max_build_duration: 60
-    instance_type: linux # Cheaper and faster for Android
+    instance_type: mac_mini_m2  # Use Apple's macOS builder
     environment:
       flutter: stable
     scripts:
       - name: Get dependencies
         script: |
           flutter pub get
-      - name: Build APK (no debug/release flag)
+      - name: Build normal APK
         script: |
           flutter build apk
     artifacts:
-      - build/app/outputs/flutter-apk/app-profile.apk
       - build/app/outputs/flutter-apk/app.apk
